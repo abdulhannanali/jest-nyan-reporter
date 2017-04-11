@@ -1,0 +1,7 @@
+{
+    "jest": {
+        "reporters": [
+            ["<rootDir>/nyanReporter.js", {"suppressErrorReporter": true}]
+        ]
+    }
+}

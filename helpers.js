@@ -107,7 +107,7 @@ const epilogue = ({
 
   console.log();
 
-  if (numTotalTests === numPassedTests) {
+  if (numTotalTests && numTotalTests === numPassedTests) {
     console.log(color('bright pass', `   ${symbols.ok}  All Tests Passed`));
   }
 };
@@ -116,6 +116,10 @@ const epilogue = ({
  * Prints failure messsages for the reporters to be displayed
  */
 function printFailureMessages(results) {
+  if (!results.numTotalTests || !results.numFailedTests) {
+    return;
+  }
+
   console.log(color('bright fail', `  ${symbols.err} Failed Tests:`));
   console.log('\n');
 

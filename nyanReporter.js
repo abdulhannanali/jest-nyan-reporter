@@ -42,8 +42,8 @@ class NyanReporter {
     this.trajectories = [[], [], [], []];
     this.trajectoryWidthMax = width - nyanCatWidth;
 
-    this.suppressErrorReporter = options.suppressErrorReporter === true;
-    this.renderOnRunCompletely = options.renderOnRunCompletely === true;
+    this.suppressErrorReporter = options.suppressErrorReporter || false;
+    this.renderOnRunCompletely = options.renderOnRunCompletely || false;
   }
 
   onRunStart(config, results) {
