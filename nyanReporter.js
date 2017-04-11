@@ -8,10 +8,8 @@
 const helpers = require('./helpers');
 
 const cursor = helpers.cursor;
-const isatty = helpers.isatty;
-const colors = helpers.colors;
 const color = helpers.color;
-const window = helpers.window
+const window = helpers.window;
 
 const write = (string) => process.stdout.write(string);
 
@@ -34,7 +32,7 @@ class NyanReporter {
    */
   constructor(options = {}) {
     var nyanCatWidth = this.nyanCatWidth = 11;
-    var width = window.width * 0.75 | 0;
+    var width = window.width * 0.75 || 0;
 
     this.colorIndex = 0;
     this.numberOfLines = 4;
@@ -48,7 +46,7 @@ class NyanReporter {
     this.renderOnRunCompletely = options.renderOnRunCompletely === true;
   }
 
-  onRunStart (config, results) {
+  onRunStart(config, results) {
     cursor.CR();
     cursor.hide();
 
@@ -57,13 +55,13 @@ class NyanReporter {
     }
   }
 
-  onTestResult (config, result, results) {
+  onTestResult(config, result, results) {
     if (!this.renderOnRunCompletely) {
       this.draw(results);
     }
   }
 
-  onRunComplete (config, results) {
+  onRunComplete(config, results) {
     this.draw(results);
     cursor.show();
     for (var i = 0; i < this.numberOfLines; i++) {
@@ -100,11 +98,11 @@ class NyanReporter {
       numPassedTests,
       numFailedTests,
       numPendingTests,
-      numTotalTests
+      numTotalTests,
     }) {
-    this.drawType('total tests', numTotalTests)
+    this.drawType('total tests', numTotalTests);
     this.drawType('green', numPassedTests);
-    this.drawType('fail', numFailedTests)
+    this.drawType('fail', numFailedTests);
     this.drawType('pending', numPendingTests);
     
     this.cursorUp(this.numberOfLines);
@@ -185,7 +183,7 @@ class NyanReporter {
     this.cursorUp(this.numberOfLines);
   }
 
-  face (results) {
+  face(results) {
     if (results.numFailedTests) {
       return '( x .x)';
     } else if (results.numPendingTests) {
@@ -204,7 +202,7 @@ class NyanReporter {
       write('\u001b[' + this.scoreboardWidth + 'C');
       write(line.join(''));
       write('\n');
-    })
+    });
 
     this.cursorUp(this.numberOfLines);
   }
@@ -225,7 +223,7 @@ class NyanReporter {
    * @private
    * @param {number} n
    */
-  cursorUp (n) {
+  cursorUp(n) {
     write('\u001b[' + n + 'A');
   }
 
