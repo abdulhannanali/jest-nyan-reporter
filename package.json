@@ -4,14 +4,27 @@
   "main": "index.js",
   "jest": {
     "reporters": [
-      ["<rootDir>/nyanReporter.js", {}]
+      "<rootDir>/nyanReporter.js"
     ]
   },
   "dependencies": {
+    "eslint-plugin-flowtype": "^2.30.4",
     "supports-color": "^3.2.3"
   },
   "repository": {
     "url": "https://github.com/abdulhannanali/jest-nyan-reporter",
     "type": "git"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.1",
+    "eslint": "^3.19.0",
+    "eslint-config-fbjs": "^1.1.1",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-jasmine": "^2.2.0",
+    "eslint-plugin-prefer-object-spread": "^1.1.0",
+    "eslint-plugin-react": "^6.10.3"
+  },
+  "scripts": {
+    "lint": "eslint *.js"
   }
 }
