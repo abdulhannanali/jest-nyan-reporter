@@ -1,5 +1,5 @@
 {
-  "name": "nyan-jest-reporter",
+  "name": "jest-nyan-reporter",
   "version": "1.0.0",
   "main": "index.js",
   "jest": {
