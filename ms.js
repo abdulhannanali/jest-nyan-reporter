@@ -1,4 +1,7 @@
+/* eslint-disable consistent-return */
+
 'use strict';
+
 
 /**
  * Helpers.
@@ -22,7 +25,7 @@ var y = d * 365.25;
  * @param {Object} options
  * @return {string|number}
  */
-module.exports = function (val, options) {
+module.exports = function(val, options) {
   options = options || {};
   if (typeof val === 'string') {
     return parse(val);
@@ -38,13 +41,14 @@ module.exports = function (val, options) {
  * @param {string} str
  * @return {number}
  */
-function parse (str) {
+function parse(str) {
   var match = (/^((?:\d+)?\.?\d+) *(ms|seconds?|s|minutes?|m|hours?|h|days?|d|years?|y)?$/i).exec(str);
   if (!match) {
     return;
   }
   var n = parseFloat(match[1]);
   var type = (match[2] || 'ms').toLowerCase();
+
   switch (type) {
     case 'years':
     case 'year':
@@ -80,7 +84,7 @@ function parse (str) {
  * @param {number} ms
  * @return {string}
  */
-function shortFormat (ms) {
+function shortFormat(ms) {
   if (ms >= d) {
     return Math.round(ms / d) + 'd';
   }
@@ -103,7 +107,7 @@ function shortFormat (ms) {
  * @param {number} ms
  * @return {string}
  */
-function longFormat (ms) {
+function longFormat(ms) {
   return plural(ms, d, 'day') ||
     plural(ms, h, 'hour') ||
     plural(ms, m, 'minute') ||
@@ -119,7 +123,7 @@ function longFormat (ms) {
  * @param {number} n
  * @param {string} name
  */
-function plural (ms, n, name) {
+function plural(ms, n, name) {
   if (ms < n) {
     return;
   }

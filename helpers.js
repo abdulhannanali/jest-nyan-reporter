@@ -1,6 +1,6 @@
 const useColors = require('supports-color');
 const tty = require('tty');
-const ms = require('./ms')
+const ms = require('./ms');
 
 const isatty = tty.isatty(1) && tty.isatty(2);
 
@@ -9,7 +9,7 @@ const window = { width: 75 };
 if (isatty) {
   window.width = process.stdout.getWindowSize
     ? process.stdout.getWindowSize(1)[0]
-    : tty.getWindowSize()[1]
+    : tty.getWindowSize()[1];
 }
 
 const colors = {
@@ -32,7 +32,7 @@ const colors = {
   light: 90,
   'diff gutter': 90,
   'diff added': 32,
-  'diff removed': 31
+  'diff removed': 31,
 };
 
 const symbols = {
@@ -40,13 +40,13 @@ const symbols = {
   err: '✖',
   dot: '․',
   comma: ',',
-  bang: '!'
+  bang: '!',
 };
 
 if (process.platform === 'win32') {
-    symbols.ok = '\u221A'
-    symbols.err = '\u00D7'
-    symbols.dot = '.'
+  symbols.ok = '\u221A';
+  symbols.err = '\u00D7';
+  symbols.dot = '.';
 }
 
 const color = (type, str) => {
@@ -56,29 +56,29 @@ const color = (type, str) => {
 
   const colorStr = '\u001b[' + colors[type] + 'm' + str + '\u001b[0m';
   return colorStr;
-}
+};
 
 const cursor = {
   hide: () => isatty && process.stdout.write('\u001b[?25l'),
   show: () => isatty && process.stdout.write('\u001b[?25h'),
   deleteLine: () => isatty && process.stdout.write('\u001b[2K'),
   beginningOfLine: () => isatty && process.stdout.write('\u001b[0G'),
-  CR: function () {
+  CR: function() {
     if (isatty) {
       this.deleteLine();
       this.beginningOfLine();
     } else {
       process.stdout.write('\r');
     }
-  }
-}
+  },
+};
 
 const epilogue = ({
   numPassedTests,
   numFailedTests,
   numPendingTests,
   numTotalTests,
-  startTime
+  startTime,
 }) => {
   const duration = Date.now() - startTime;
   let fmt;
@@ -86,12 +86,12 @@ const epilogue = ({
   console.log();
 
   fmt = color('total tests', '   %d total') +
-    color('light', ' (%s) ')
+    color('light', ' (%s) ');
 
   console.log(fmt, numTotalTests, ms(duration));
 
   fmt = color('bright pass', `   ${symbols.ok}`) +
-    color('green', ' %d passing')
+    color('green', ' %d passing');
 
   console.log(fmt, numPassedTests || 0);
 
@@ -110,22 +110,22 @@ const epilogue = ({
   if (numTotalTests === numPassedTests) {
     console.log(color('bright pass', `   ${symbols.ok}  All Tests Passed`));
   }
-}
+};
 
 /**
  * Prints failure messsages for the reporters to be displayed
  */
-function printFailureMessages (results) {
-  console.log(color('bright fail', `  ${symbols.err} Failed Tests:`))
+function printFailureMessages(results) {
+  console.log(color('bright fail', `  ${symbols.err} Failed Tests:`));
   console.log('\n');
 
   results.testResults.forEach(({failureMessage}) => {
     if (failureMessage) {
-      console.log(failureMessage)
+      console.log(failureMessage);
     }
   });
 
-  process.stdout.write('\n')
+  process.stdout.write('\n');
 }
 
 
@@ -138,5 +138,5 @@ module.exports = {
   window,
   epilogue,
   isatty,
-  useColors
-}
+  useColors,
+};
