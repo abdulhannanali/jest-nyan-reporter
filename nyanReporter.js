@@ -113,7 +113,7 @@ class NyanReporter {
    */
   drawType(type, n) {
     write(' ');
-    write(color(type, n));
+    write(color(type, n || 0));
     write('\n');
   }
 
