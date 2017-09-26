@@ -30,7 +30,7 @@ class NyanReporter {
    * 
    * @constructor
    */
-  constructor(options = {}) {
+  constructor(_, options = {}) {
     var nyanCatWidth = this.nyanCatWidth = 11;
     var width = window.width * 0.75 || 0;
 
@@ -111,7 +111,7 @@ class NyanReporter {
   /**
    * Draws the type of stat along with a color
    */
-  drawType(type, n) {
+  drawType(type, n = 0) {
     write(' ');
     write(color(type, n));
     write('\n');
