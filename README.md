@@ -1,5 +1,7 @@
 # jest-nyan-reporter
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/abdulhannanali/jest-nyan-reporter.svg)](https://greenkeeper.io/)
+
 <!--Badges Start-->
 [![npm version](https://badge.fury.io/js/jest-nyan-reporter.svg)](https://badge.fury.io/js/jest-nyan-reporter)
 <!--Badges End-->
