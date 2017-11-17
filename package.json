@@ -9,20 +9,20 @@
   },
   "dependencies": {
     "eslint-plugin-flowtype": "^2.30.4",
-    "supports-color": "^3.2.3"
+    "supports-color": "^5.0.0"
   },
   "repository": {
     "url": "https://github.com/abdulhannanali/jest-nyan-reporter",
     "type": "git"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.1",
-    "eslint": "^3.19.0",
-    "eslint-config-fbjs": "^1.1.1",
+    "babel-eslint": "^8.0.2",
+    "eslint": "^4.11.0",
+    "eslint-config-fbjs": "^2.0.0",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-jasmine": "^2.2.0",
     "eslint-plugin-prefer-object-spread": "^1.1.0",
-    "eslint-plugin-react": "^6.10.3"
+    "eslint-plugin-react": "^7.4.0"
   },
   "scripts": {
     "lint": "eslint *.js",
