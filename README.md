@@ -42,7 +42,7 @@ In order to configure the Nyan Reporter, you can add the following configuration
 }
 ```
 
-or view CLI:
+or via CLI:
 
 ```bash
 jest --reporters jest-nyan-reporter
