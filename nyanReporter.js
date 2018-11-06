@@ -19,15 +19,15 @@ class NyanReporter {
    * Options aren't directly passed to the NyanReporter
    * but are instead passed through Jest. We specify the options in the
    * jest configuration and as a result they are passed to us
-   * 
+   *
    * Following options are supported with Jest right now:
-   * 
+   *
    * - suppressErrorReporter
    *   If this is `true` the Error reporter isn't showed in case tests fail.
-   * 
+   *
    * - renderOnRunCompletely
-   *   If true, the output is only rendered when the run completes successfully  
-   * 
+   *   If true, the output is only rendered when the run completes successfully
+   *
    * @constructor
    */
   constructor(options = {}) {
@@ -75,7 +75,7 @@ class NyanReporter {
     }
   }
 
-  /**  
+  /**
    * Generate rainbow colors
    *
    * @private
@@ -100,11 +100,11 @@ class NyanReporter {
       numPendingTests,
       numTotalTests,
     }) {
-    this.drawType('total tests', numTotalTests);
-    this.drawType('green', numPassedTests);
-    this.drawType('fail', numFailedTests);
-    this.drawType('pending', numPendingTests);
-    
+    this.drawType('total tests', numTotalTests || 0);
+    this.drawType('green', numPassedTests || 0);
+    this.drawType('fail', numFailedTests || 0);
+    this.drawType('pending', numPendingTests || 0);
+
     this.cursorUp(this.numberOfLines);
   }
 
@@ -120,7 +120,7 @@ class NyanReporter {
   /**
    * Append the rainbow.
    * @private
-   * 
+   *
    * @param {string} str
    * @return {string}
    */
@@ -151,7 +151,7 @@ class NyanReporter {
 
   /**
    * Draw the Nyan Cat
-   * 
+   *
    * @private
    */
   drawNyanCat(results) {
@@ -219,7 +219,7 @@ class NyanReporter {
 
   /**
    * Move cursor up `n`
-   * 
+   *
    * @private
    * @param {number} n
    */
